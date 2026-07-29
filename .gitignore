@@ -1,0 +1,16 @@
+# Project Source Code
+Projects/
+Templates/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env
