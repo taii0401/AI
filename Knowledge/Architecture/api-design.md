@@ -76,7 +76,7 @@ Response 應穩定。
 範例：
 
 ```text
-/api/v1/orders
+/api/orders
 ```
 
 內部 API 不一定一開始就需要版本化。

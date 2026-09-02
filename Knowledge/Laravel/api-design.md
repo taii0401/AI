@@ -119,7 +119,7 @@ MVP 階段不一定需要 API versioning。
 需要公開給第三方或 mobile app 使用時，建議加入版本：
 
 ```text
-/api/v1/posts
+/api/posts
 ```
 
 版本化原則：
