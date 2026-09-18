@@ -13,3 +13,6 @@ Thumbs.db
 
 # Environment files
 .env
+
+glidery-key.pem
+glidery-key.ppk
