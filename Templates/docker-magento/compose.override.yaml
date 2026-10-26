@@ -1,0 +1,44 @@
+services:
+  app:
+    ports: !override
+      - "127.0.0.1:18080:8000"
+      - "127.0.0.1:18443:8443"
+
+  db:
+    ports: !reset []
+
+  redis:
+    ports: !reset []
+
+  opensearch:
+    ports: !reset []
+    environment:
+      OPENSEARCH_JAVA_OPTS: "-Xms1g -Xmx1g"
+    healthcheck:
+      start_period: 120s
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  rabbitmq:
+    ports: !reset []
+    healthcheck:
+      start_period: 120s
+      interval: 5s
+      timeout: 10s
+      retries: 30
+
+  mailcatcher:
+    ports: !override
+      - "127.0.0.1:18025:1080"
+
+  phpmyadmin:
+    image: linuxserver/phpmyadmin:latest
+    profiles:
+      - tools
+    env_file:
+      - env/db.env
+    ports:
+      - "127.0.0.1:18081:80"
+    depends_on:
+      - db
