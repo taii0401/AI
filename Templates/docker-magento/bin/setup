@@ -15,6 +15,9 @@ MEM_MB=$(( MEM_BYTES / 1000000 ))
 
 DOMAIN=${1:-magento.test}
 
+source "$(dirname "$0")/../.env"
+BASE_URL="https://${DOMAIN}:${HTTPS_PORT}/"
+
 # Safety net for projects that bypass bin/download (git clone of magento2,
 # manual composer create-project, etc.). Resolves edition + version from
 # src/composer.json and pins service images before bin/start. Non-fatal:
@@ -69,9 +72,9 @@ bin/clinotty bin/magento deploy:mode:set developer
 cp -r .vscode src/
 
 echo "Docker development environment setup complete."
-echo "You may now access your Magento instance at https://${DOMAIN}/"
+echo "You may now access your Magento instance at ${BASE_URL}"
 
-echo "You may now access your Magento backend instance at https://${DOMAIN}/admin/"
+echo "You may now access your Magento backend instance at ${BASE_URL}${MAGENTO_ADMIN_FRONTNAME}/"
 
 echo "Use the following default credentials to log in:"
 echo "Username: $MAGENTO_ADMIN_USER"
